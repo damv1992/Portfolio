@@ -14,6 +14,7 @@
                         <a href="<?=site_url('pagina')?>" class="pagina btn btn-secondary" type="button">Pagina</a>
                         <a href="<?=site_url('social')?>" class="social btn btn-secondary" type="button">Redes Sociales</a>
                         <a href="<?=site_url('acerca')?>" class="acerca btn btn-secondary" type="button">Acerca</a>
+                        <a href="<?=site_url('visitante')?>" class="visitante btn btn-secondary" type="button">Visitantes</a>
                         <a href="<?=site_url('habilidad')?>" class="habilidad btn btn-secondary" type="button">Habilidades</a>
                         <a href="<?=site_url('experiencia')?>" class="experiencia btn btn-secondary" type="button">Experiencias</a>
                         <a href="<?=site_url('educacion')?>" class="educacion btn btn-secondary" type="button">Educaciones</a>

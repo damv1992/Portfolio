@@ -29,6 +29,12 @@ CREATE TABLE Acerca (
     Freelance boolean NOT NULL,
     Foto varchar(50) NOT NULL
 );
+CREATE TABLE Visitantes (
+    Ip varchar(20) NOT NULL,
+    Perteneciente varchar(100),
+    FechaVisita datetime NOT NULL,
+    PRIMARY KEY (Ip)
+);
 CREATE TABLE Habilidades (
     IdHabilidad bigint NOT NULL,
     Habilidad varchar(50) NOT NULL,

@@ -29,8 +29,9 @@ function cargarTabla(controlador) {
             cache: false,
             url: site_url + controlador + '/listar',
         },
-        "pageLength": 10,
-        "responsive": true,
+        //"pageLength": 25,
+        "scrollX": true,
+        //"responsive": true,
         "autoWidth": true,
         "processing": true,
         "language": {
@@ -56,7 +57,16 @@ function cargarTabla(controlador) {
                 "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
                 "sSortDescending": ": Activar para ordenar la columna de manera descendente"
             }
-        }
+        },
+        dom: 'Bflrtip',
+        buttons: [{
+            extend: 'print',
+            text: '<i class="fa fa-print"></i> Imprimir',
+            customize: function (win) {
+                $(win.document.body).find('h1').css('text-align', 'center');
+                if (extra) $(win.document.body).find('h1').append('<h6>' + extra + '</h6>');
+            }
+        }]
     });
 }
 

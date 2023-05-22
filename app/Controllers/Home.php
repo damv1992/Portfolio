@@ -10,6 +10,7 @@ use App\Models\ExperienciasModel;
 use App\Models\EducacionesModel;
 use App\Models\CursosModel;
 use App\Models\ProyectosModel;
+use App\Models\VisitantesModel;
 
 class Home extends BaseController {
 
@@ -24,6 +25,7 @@ class Home extends BaseController {
 		$this->educaciones = new EducacionesModel();
 		$this->cursos = new CursosModel();
 		$this->proyectos = new ProyectosModel();
+		$this->visitantes = new VisitantesModel();
 	}
 
 	public function index() {
@@ -31,6 +33,7 @@ class Home extends BaseController {
 		if (!$configuracion) $this->generarDatosPagina();
 		$datos = $this->datosPrincipales();
 		$datos += $this->datosSecundarios();
+		$this->registrarVisitante();
 		$datos += [
 			'titulo' => 'Inicio',
 		];
@@ -203,5 +206,21 @@ class Home extends BaseController {
 			'titulo' => 'Página de error 404',
 		];
 		return view('404', $datos);
+	}
+
+	public function registrarVisitante() {
+        $ip = gethostbyname('www.google.com');
+		$visitante = $this->visitantes->where('Ip', $ip)->first();
+		if ($visitante)
+			$this->visitantes->where([
+				'Ip' => $ip,
+			])->set([
+				'FechaVisita' => date('Y-m-d H:i:s'),
+			])->update();
+		else 
+			$this->visitantes->insert([
+				'Ip' => $ip,
+				'FechaVisita' => date('Y-m-d H:i:s'),
+			]);
 	}
 }
